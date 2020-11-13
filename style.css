@@ -1,8 +1,3 @@
-body {
-    background-position: center;
-    background-size: cover;
-}
-
 .heading {
     width: 100%;
     text-align: center;
@@ -31,4 +26,36 @@ body {
     position: absolute;
     text-align: center;
     left: 48%;
+}
+
+#pointyhere {
+    font-size: 22px;
+
+    position: absolute;
+    text-align: center;
+    left: 48%;
+    top: 100%;
+}
+
+h4 {
+    background-color: grey;
+    color: white;
+    line-height: 2;
+}
+
+canvas {
+    border: 3px solid white;
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px white;
+    text-align: center;
+    position: absolute;
+    left: 30%;
+}
+
+h4 {
+    background-color: grey;
+    color: white;
+    line-height: 2;
+    text-align: center;
+
 }
