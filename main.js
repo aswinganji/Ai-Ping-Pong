@@ -26,6 +26,11 @@ var ball = {
   dy: 3
 }
 
+function preload() {
+  balltouch = loadSound("ball_touch_paddel.wav");
+  miss = loadSound("missed.wav");
+}
+
 function setup() {
   var canvas = createCanvas(700, 600);
   video = createCapture(VIDEO);
@@ -38,8 +43,8 @@ function setup() {
 function gotPoses(results) {
   if (results.length > 0) {
     console.log(resuls);
-    wristX = results[0].pose.wrist.x;
-    wristY = results[0].pose.wrist.y;
+    wristX = results[0].pose.rightWrist.x;
+    wristY = results[0].pose.rightWrist.y;
     console.log("Wrist X = " + wristX + "" + "Wrist Y = " + wristY);
   }
 }
@@ -70,7 +75,7 @@ function draw() {
     fill(250, 0, 0);
     stroke(0, 0, 250);
     strokeWeight(0.5);
-    paddle1Y = mouseY;
+    paddle1Y = wristY;
     rect(paddle1X, paddle1Y, paddle1, paddle1Height, 100);
 
 
@@ -150,6 +155,7 @@ function move() {
       pcscore++;
       reset();
       navigator.vibrate(100);
+      miss.play();
     }
   }
   if (pcscore == 4) {
@@ -193,4 +199,10 @@ function paddleInCanvas() {
 
 function modelLoaded() {
   console.log("Model Is Here")
+}
+
+function restart() {
+  pcscore = 0;
+  playerscore = 0;
+  restart();
 }
